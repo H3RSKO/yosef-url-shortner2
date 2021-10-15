@@ -1,23 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import {Container, Grid} from '@material-ui/core'
+import Navbar from './Navbar';
+import TopComponent from './TopComponent';
+import UrlShortener from './UrlShortener';
+import { useState } from 'react';
+import BottomComponent from './BottomComponent';
+import styled from 'styled-components';
+
+const AppWrapper = styled(Grid)`
+    padding: 0 5em;
+     width: 100vw;
+
+    @media (max-width: 768px) {
+      padding: 0;
+  }
+  `
+
 
 function App() {
+  const [previousUrls, setPreviousUrls] = useState([]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <Container maxWidth="lg"> */}
+        <AppWrapper container justifyContent="center" direction="column" style={{}}>
+          <Navbar/>
+          <TopComponent />
+          <UrlShortener setPreviousUrls={setPreviousUrls} previousUrls={previousUrls}/>
+        </AppWrapper>
+          <BottomComponent previousUrls={previousUrls}/>
+      {/* </Container> */}
     </div>
   );
 }

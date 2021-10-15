@@ -1,0 +1,11 @@
+.links{
+  color: #9E9AA8
+}
+
+.links:hover {
+  color: #34313D
+}
+
+.MuiAppBar-colorPrimary {
+  background-color: "white";
+}
