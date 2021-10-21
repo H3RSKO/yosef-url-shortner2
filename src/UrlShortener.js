@@ -1,7 +1,6 @@
 import { Grid, TextField } from "@material-ui/core";
 import axios from "axios";
-import { useState, useEffect } from "react";
-import StandardButton from "./components/StandardButton";
+import { useState } from "react";
 import "./UrlShortener.js"
 import styled from 'styled-components';
 
@@ -15,6 +14,7 @@ border-radius: 7px ;
 align-items: center ;
 z-index: 1 ;
 align-self: center ;
+  width: fill-available;
 /* display: flex ;
 flex-direction: row; */
 
@@ -27,11 +27,19 @@ flex-direction: row; */
 }
 `;
 
-const SearchBar = styled(TextField)`
-background-color: white !important;
-border-radius: 6px !important;
- width: 100% !important;
- font-weight: 700 !important;
+const SearchBar = styled.input`
+background-color: white;
+border-radius: 6px;
+font-weight: bold;
+outline: none;
+border: none;
+padding: 1.075em 1.3em;
+width: fill-available;
+height: 100%;
+font-size: 20px;
+font-weight: bold;
+/* max-width: -webkit-fill-available; */
+
 `
 
 const ButtonContainer = styled(Grid)`
@@ -52,9 +60,11 @@ const UrlButton = styled.div`
   width: fit-content;
   font-size: 20px;
   font-weight: bold;
+  white-space: nowrap;
 
   @media (max-width: 800px) {
-      width: 100% !important;
+      /* width: 100% !important; */
+    width: fill-available;
   }
 
   &:hover {
@@ -82,8 +92,7 @@ const UrlShortener = ({previousUrls, setPreviousUrls}) => {
       direction="row"
     >
       <Grid item xs={12} md={10} style={{width: "100%", height: "100%", display: "flex"}}>
-        <SearchBar variant="filled" placeholder="Shorten a link here..." InputProps={{style: {fontSize: "20px"}}} // font size of input text
-  InputLabelProps={{style: {fontSize: "20px", display:"flex", alignSelf: "center"}}} onChange={(e) => setCurrentUrl(e.target.value)} value={currentUrl}>
+        <SearchBar type="url" placeholder="Shorten a link here..."  onChange={(e) => setCurrentUrl(e.target.value)} value={currentUrl}>
         </SearchBar> 
       </Grid>
       <ButtonContainer item xs={12} md={2} >

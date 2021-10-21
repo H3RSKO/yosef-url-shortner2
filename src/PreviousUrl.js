@@ -1,6 +1,5 @@
 import { Grid } from "@material-ui/core";
 import { useState } from "react";
-import StandardButton from "./components/StandardButton";
 import styled from 'styled-components';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
