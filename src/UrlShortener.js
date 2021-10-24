@@ -92,8 +92,7 @@ const UrlShortener = ({previousUrls, setPreviousUrls}) => {
       direction="row"
     >
       <Grid item xs={12} md={10} style={{width: "100%", height: "100%", display: "flex"}}>
-        <SearchBar type="url" placeholder="Shorten a link here..."  onChange={(e) => setCurrentUrl(e.target.value)} value={currentUrl}>
-        </SearchBar> 
+        <SearchBar type="url" placeholder="Shorten a link here..."  onChange={(e) => setCurrentUrl(e.target.value)} value={currentUrl} />
       </Grid>
       <ButtonContainer item xs={12} md={2} >
         <UrlButton onClick={clickHandler} >
