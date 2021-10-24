@@ -1,4 +1,4 @@
-import { Grid, TextField } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import axios from "axios";
 import { useState } from "react";
 import "./UrlShortener.js"
@@ -14,7 +14,7 @@ border-radius: 7px ;
 align-items: center ;
 z-index: 1 ;
 align-self: center ;
-  width: fill-available;
+width: fill-available;
 /* display: flex ;
 flex-direction: row; */
 
