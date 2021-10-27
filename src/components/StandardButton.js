@@ -5,8 +5,9 @@ const StyledButton = styled(Button)`
   /* background-color: #2bd0d0; */
   color: white !important;
   border-radius: 25px !important;
-  padding: 0.6em2em !important;
+  padding: 0.6em 2.2em !important;
   text-transform: none !important;
+  font-weight: bold !important;
 
   &:hover {
     background-color: #9ae3e3 !important;

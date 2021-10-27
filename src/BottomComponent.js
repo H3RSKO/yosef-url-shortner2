@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import { SellingPoint } from "./components/SellingPoint";
 import {brandRecognition, detailedRecords, fullyCustomizable} from "./sellingPointIcons"
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import StandardButton from './components/StandardButton'
+import { bgBoostDesktop, bgBoostMobile } from "./backgroundSvgs";
+
 
 const BottomContainer = styled(Grid)`
   min-height: 20em;
@@ -65,11 +68,11 @@ const SellingPointsContainer = styled(Grid)`
 
   @media (max-width: 1100px) {
     flex-direction: column;
+    align-items: center;
   }
 
   @media (max-width: 600px) {
     padding: 0;
-    align-items: center;
   }
 `
 
@@ -90,7 +93,7 @@ const BottomBar = styled.hr`
   margin-left: 10em;
   margin-top: -2em;
 
-  @media (max-width: 600px) {
+  @media (max-width: 1100px) {
     transform: rotate(90deg);
     margin-left: 0;
     width: 100vh;
@@ -98,6 +101,32 @@ const BottomBar = styled.hr`
   }
 `;
 
+const Footer = styled(Grid)`
+  justify-content: center;
+  margin-top: 5em;
+  background-color: #3a3054;
+  height: 16em;
+`;
+
+const FooterTextContainer = styled.div`
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 2em;
+
+  @media (max-width: 600px) {
+    margin-top: 4em;
+  }
+`;
+
+const FooterHeaderText = styled.h1`
+  color: white;
+  font-size: 40px;
+
+  @media (max-width: 600px) {
+    font-size: 28px;
+  }
+`;
 
 const sellingPoints = [
   {title: "Brand Recognition", text: "Boost your brand recognition with each click. Generic links don’t mean a thing. Branded links help instil confidence in your content.", icon: brandRecognition},
@@ -106,7 +135,8 @@ const sellingPoints = [
 ]
 
 const BottomComponent = ({previousUrls}) => {
-  const isDesktop = useMediaQuery('(min-width:600px)');
+  const isDesktop = useMediaQuery('(min-width:1100px)');
+  const isMobile = useMediaQuery('(min-width:600px)');
 
   return (
    <BottomContainer container direction="column">
@@ -139,7 +169,7 @@ const BottomComponent = ({previousUrls}) => {
          xs={12}
        >
          {sellingPoints.map((point, index) => (
-           <SellingPointsInnerContainer item xs={12} sm={6} key={index} >
+           <SellingPointsInnerContainer item xs={12} key={index} >
              <SellingPoint
                title={point.title}
                text={point.text}
@@ -149,12 +179,20 @@ const BottomComponent = ({previousUrls}) => {
              />
            </SellingPointsInnerContainer>
          ))}
-         <BottomBar
-           style={{ }}
-         ></BottomBar>
+         <BottomBar/>
        </SellingPointsContainer>
      </Grid>
      {/* </Grid> */}
+     <Footer item xs={12} style={{ }}>
+          <FooterTextContainer style={{}}>
+          <FooterHeaderText style={{}}>Boost your links today</FooterHeaderText>
+          <StandardButton text="Get Started" style={{fontSize: "20px", fontWeight: "bold !important"}}/>
+          </FooterTextContainer>
+          <div style={{ display: "flex", width: "100%", height: "16em"}}>
+          {isMobile ? bgBoostDesktop : bgBoostMobile}
+          {/* {isMobile ? <bgBoostMobile style={{position: 'absolute', left: 0, top: 0, width: '100%', height: '100%'}}/> : <bgBoostDesktop style={{position: 'absolute', left: 0, top: 0, width: '100%', height: '100%'}}/>} */}
+          </div>
+     </Footer>
    </BottomContainer>
  );
 }
