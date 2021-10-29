@@ -7,30 +7,33 @@ const PrevUrlOuterContainer = styled(Grid)`
   background-color: white;
   align-items: center;
   justify-content: center;
+  border-radius: 6px;
+  font-size: 20px;
+
+  @media (max-width: 750px) {
+    font-size: 16px;
+  }
 
   @media (max-width: 600px) {
     flex-direction: column;
-    align-content: flex-start;
-    padding: 0.5em;
   }
 `;
 
 const UrlContainer = styled(Grid)`
   display: flex;
   padding: 2em;
-  font-size: 20px;
   font-weight: bold;
 
   @media (max-width: 600px) {
     padding: 0.5em;
-    font-size: 20px;
     font-weight: 500;
+    align-self: flex-start;
+    margin-left: 0.5em !important;
   }
 `;
 
 const ShortUrlContainer = styled(Grid)`
   color: #2bd0d0;
-  font-size: 20px;
   font-weight: bold;
   display: flex;
   justify-content: end;
@@ -39,28 +42,28 @@ const ShortUrlContainer = styled(Grid)`
 
   @media (max-width: 600px) {
     padding: 0.5em;
-    font-size: 20px;
     font-weight: 500;
+    align-self: flex-start;
+    margin-left: 0.5em !important;
   }
 `;
 
 const UrlButton = styled.div`
   /* background-color: #2bd0d0 !important; */
-  color: white !important;
-  border-radius: 6px !important;
-  text-transform: none !important;
-  padding: 0.5em 1.3em!important;
-  width: fit-content !important;
-  font-size: 20px;
+  color: white ;
+  border-radius: 6px ;
+  text-transform: none ;
+  padding: 0.5em 1.3em;
+  width: fit-content ;
   font-weight: bold;
 
   @media (max-width: 800px) {
-      width: 80% !important;
-      padding: 0;
+      width: 80% ;
   }
 
   &:hover {
-    background-color: #9ae3e3 !important;
+    background-color: #9ae3e3 ;
+    cursor: pointer;
   }
 `;
 
@@ -77,18 +80,20 @@ const PreviousUrl = ({ url, shortUrl }) => {
   }
 
   return (
-  <PrevUrlOuterContainer container>
-    <UrlContainer item md={7} xs={12}>
+  <PrevUrlOuterContainer container >
+    <UrlContainer item sm={6} xs={12}>
       {url}
     </UrlContainer>
-    {!isDesktop && <hr class="solid" color="lightgray" width="100%"/>}
-    <ShortUrlContainer item md={3} xs={12}>
+    {!isDesktop && <hr class="solid" height="1px" color="#F2F2F2" style={{borderWidth: "0.5px", width: "100%"}} />}
+    <ShortUrlContainer item sm={3} xs={12}>
       {shortUrl}
     </ShortUrlContainer>
-    {/* <Grid item md={2} xs={12}> */}
-      <UrlButton onClick={clickHandler} style={{backgroundColor: copied ? "#3A3054" : "#2bd0d0", width: "100%"}}>
+    {/* <Grid item sm={2} xs={12}> */}
+    <Grid sm={3} xs={12} style={{width: "100%", display: "flex", justifyContent: "center", marginBottom: "1.5em"}}>
+      <UrlButton onClick={clickHandler} style={{backgroundColor: copied ? "#3A3054" : "#2bd0d0"}}>
       {copied ? "Copied!" : "Copy"}
       </UrlButton>
+    </Grid>
     {/* </Grid> */}
   </PrevUrlOuterContainer>)
 };

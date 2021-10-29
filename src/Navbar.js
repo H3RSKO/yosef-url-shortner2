@@ -18,7 +18,7 @@ return (
   <Grid container direction="row">
     <Grid item xs={6} style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
       <Grid item xs={6} >
-        <img src={logo} alt="logo"/>
+        <img src={logo} style={{fill: "#34313D"}} alt="logo"/>
       </Grid>
       {isDesktop ?
       <Grid item xs={6} style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>

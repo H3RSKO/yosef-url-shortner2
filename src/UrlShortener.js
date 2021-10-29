@@ -1,29 +1,30 @@
-import { Grid } from "@material-ui/core";
+import { Grid, useMediaQuery } from "@material-ui/core";
 import axios from "axios";
 import { useState } from "react";
 import "./UrlShortener.js"
 import styled from 'styled-components';
-
+import { bgBoostDesktop, bgBoostMobile } from "./backgroundSvgs";
 
 const SearchContainer = styled(Grid)`
-/* background-image: ./sb-background-desktop.svg; */
+/* background-image: url('bg1.svg'); */
 width: 80% ;
-background-color: #4b3f6b ;
 padding: 2.2em ;
+align-self: center ;
+background-color: #3A3054 ;
 border-radius: 7px ;
 align-items: center ;
 z-index: 1 ;
-align-self: center ;
 width: fill-available;
 /* display: flex ;
 flex-direction: row; */
+/* background: url(bg1.svg); */
+/* background-size: auto auto; */
 
 @media (max-width: 800px) {
      display: flex ;
      flex-direction: column ;
       width: 90% !important;
       padding: 1.3em ;
-
 }
 `;
 
@@ -38,8 +39,15 @@ width: fill-available;
 height: 100%;
 font-size: 20px;
 font-weight: bold;
-/* max-width: -webkit-fill-available; */
 
+
+@media (max-width: 1260px) {
+  margin-right: 1em
+}
+
+@media (max-width: 960px) {
+  margin-right: 0
+}
 `
 
 const ButtonContainer = styled(Grid)`
@@ -68,13 +76,34 @@ const UrlButton = styled.div`
   }
 
   &:hover {
+    cursor: pointer;
     background-color: #9ae3e3 !important;
   }
 `;
 
+const BackgroundContainer = styled.div`
+  display: flex;
+  width: 100%;
+  /* height: 16em; */
+  /* display: flex;
+  position: absolute;
+  z-index: -1;
+  right: calc(5em - 8px);
+  left: calc(5em - 8px);
+
+  @media (max-width: 960px) {
+    height: 234px
+  }
+
+  @media (max-width: 800px) {
+    height: 234px */
+  /* } */
+`;
 
 const UrlShortener = ({previousUrls, setPreviousUrls}) => {
   const [currentUrl, setCurrentUrl] = useState("");
+  const isMobile = useMediaQuery('(min-width:600px)');
+
   // const [previousUrls, setPreviousUrls] = useState([]);
 
   const clickHandler = async () => {
@@ -91,6 +120,7 @@ const UrlShortener = ({previousUrls, setPreviousUrls}) => {
       spacing={2}
       direction="row"
     >
+      {/* <div style={{position: "absolute", zIndex: "-1"}}> */}
       <Grid item xs={12} md={10} style={{width: "100%", height: "100%", display: "flex"}}>
         <SearchBar type="url" placeholder="Shorten a link here..."  onChange={(e) => setCurrentUrl(e.target.value)} value={currentUrl} />
       </Grid>
@@ -99,6 +129,10 @@ const UrlShortener = ({previousUrls, setPreviousUrls}) => {
         Shorten It!
         </UrlButton>
       </ButtonContainer>
+      {/* </div> */}
+      <BackgroundContainer >
+        {/* {bgBoostDesktop} */}
+      </BackgroundContainer>
     </SearchContainer>
   );
 };
