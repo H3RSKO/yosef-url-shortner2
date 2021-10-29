@@ -8,6 +8,7 @@ const StyledButton = styled(Button)`
   padding: 0.6em 2.2em !important;
   text-transform: none !important;
   font-weight: bold !important;
+  white-space: nowrap;
 
   &:hover {
     cursor: pointer;

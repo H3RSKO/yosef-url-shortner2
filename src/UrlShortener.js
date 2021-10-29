@@ -1,9 +1,8 @@
-import { Grid, useMediaQuery } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import axios from "axios";
 import { useState } from "react";
 import "./UrlShortener.js"
 import styled from 'styled-components';
-import { bgBoostDesktop, bgBoostMobile } from "./backgroundSvgs";
 
 const SearchContainer = styled(Grid)`
 /* background-image: url('bg1.svg'); */
@@ -20,7 +19,7 @@ flex-direction: row; */
 /* background: url(bg1.svg); */
 /* background-size: auto auto; */
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
      display: flex ;
      flex-direction: column ;
       width: 90% !important;
@@ -54,7 +53,7 @@ const ButtonContainer = styled(Grid)`
   display: flex;
   justify-content: center;
 
-  @media (max-width: 800px) {
+  @media (max-width: 960px) {
       width: 100% !important;
   }
 `;
@@ -70,7 +69,7 @@ const UrlButton = styled.div`
   font-weight: bold;
   white-space: nowrap;
 
-  @media (max-width: 800px) {
+  @media (max-width: 960px) {
       /* width: 100% !important; */
     width: fill-available;
   }
@@ -102,7 +101,6 @@ const BackgroundContainer = styled.div`
 
 const UrlShortener = ({previousUrls, setPreviousUrls}) => {
   const [currentUrl, setCurrentUrl] = useState("");
-  const isMobile = useMediaQuery('(min-width:600px)');
 
   // const [previousUrls, setPreviousUrls] = useState([]);
 

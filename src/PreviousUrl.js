@@ -48,6 +48,16 @@ const ShortUrlContainer = styled(Grid)`
   }
 `;
 
+const ButtonContainer = styled(Grid)`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 600px) {
+    margin-bottom: 1.5em;
+  }
+`;
+
 const UrlButton = styled.div`
   /* background-color: #2bd0d0 !important; */
   color: white ;
@@ -57,7 +67,7 @@ const UrlButton = styled.div`
   width: fit-content ;
   font-weight: bold;
 
-  @media (max-width: 800px) {
+  @media (max-width: 600px) {
       width: 80% ;
   }
 
@@ -89,11 +99,11 @@ const PreviousUrl = ({ url, shortUrl }) => {
       {shortUrl}
     </ShortUrlContainer>
     {/* <Grid item sm={2} xs={12}> */}
-    <Grid sm={3} xs={12} style={{width: "100%", display: "flex", justifyContent: "center", marginBottom: "1.5em"}}>
+    <ButtonContainer sm={3} xs={12}>
       <UrlButton onClick={clickHandler} style={{backgroundColor: copied ? "#3A3054" : "#2bd0d0"}}>
       {copied ? "Copied!" : "Copy"}
       </UrlButton>
-    </Grid>
+    </ButtonContainer>
     {/* </Grid> */}
   </PrevUrlOuterContainer>)
 };

@@ -9,9 +9,10 @@ import styled from 'styled-components';
 
 const AppWrapper = styled(Grid)`
     padding: 0 5em;
-     width: 100vw;
+    width: 100vw;
+    align-items: center;
 
-    @media (max-width: 768px) {
+    @media (max-width: 850px) {
       padding: 0;
   }
   `
@@ -23,7 +24,7 @@ function App() {
   return (
     <div className="App">
       {/* <Container maxWidth="lg"> */}
-        <AppWrapper container justifyContent="center" direction="column" style={{}}>
+        <AppWrapper container justifyContent="center" direction="column" >
           <Navbar/>
           <TopComponent />
           <UrlShortener setPreviousUrls={setPreviousUrls} previousUrls={previousUrls}/>

@@ -7,14 +7,23 @@ const TopComponent = () => {
 
   const TopWrapper = styled(Grid)`
     padding: 0 3em;
+
+    @media (max-width: 1150px) {
+      padding: 0;
+      margin: 0 -4em
+    }
+
     @media (max-width: 600px) {
       padding: 0 ;
   }
   `
 
   const WorkerWrapper = styled(Grid)`
-    overflow: hidden;
+    overflow: visible;
 
+    @media (max-width: 900px) {
+      overflow: hidden;
+    }
     @media (max-width: 600px) {
         width: 100vw;
         padding-left: 1em;
@@ -36,6 +45,13 @@ const TopComponent = () => {
     line-height: 90px !important;
     letter-spacing: -2px !important;
 
+  @media (max-width: 1250px) {
+    font-size: 3.3em !important;
+    line-height: 60px !important;
+    letter-spacing: 0 !important;
+
+    }
+
   @media (max-width: 1000px) {
     font-weight: 700 !important;
     font-size: 42px !important;
@@ -51,7 +67,7 @@ const TopComponent = () => {
     line-height: 36px !important;
     font-weight: 500 !important;
     color: rgba(157.97, 154.06, 168.23, 1) !important;
-    margin: 1em02.5em0 !important;
+    margin: 1em 0 2.5em 0 !important;
 
     @media (max-width: 1000px) {
       font-size: 18px !important;

@@ -68,6 +68,11 @@ const SubText = styled.div`
   margin-left: auto;
   margin-right: auto;
 
+  @media (max-width: 750px) {
+    max-width: 80vw;
+    padding: 1em
+  }
+
   @media (max-width: 600px) {
     max-width: 100vw;
     font-size: 16px;
@@ -83,6 +88,7 @@ const SellingPointsContainer = styled(Grid)`
   @media (max-width: 1100px) {
     flex-direction: column;
     align-items: center;
+    padding: 5em 0em;
   }
 
   @media (max-width: 600px) {
