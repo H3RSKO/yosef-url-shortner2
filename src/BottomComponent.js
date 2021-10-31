@@ -1,14 +1,17 @@
 import { Grid } from "@material-ui/core";
 import PreviousUrl from "./PreviousUrl";
-import styled from 'styled-components';
+import styled from "styled-components";
 import { SellingPoint } from "./components/SellingPoint";
-import {brandRecognition, detailedRecords, fullyCustomizable} from "./sellingPointIcons"
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import StandardButton from './components/StandardButton'
-import { bgBoostDesktop, bgBoostMobile } from "./backgroundSvgs";
-import logo from "./logow.svg"
-import { Facebook, Pintrest, Instagram, Twitter } from "./mediaLogos";
-
+import {
+  brandRecognition,
+  detailedRecords,
+  fullyCustomizable,
+} from "./media/sellingPointIcons";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import StandardButton from "./components/StandardButton";
+import { bgBoostDesktop, bgBoostMobile } from "./media/backgroundSvgs";
+import logo from "./media/logow.svg";
+import { Facebook, Pintrest, Instagram, Twitter } from "./media/mediaLogos";
 
 const BottomContainer = styled(Grid)`
   min-height: 20em;
@@ -32,7 +35,6 @@ const PrevUrlsContainer = styled(Grid)`
 
   @media (max-width: 600px) {
     margin-top: 6em !important;
-
   }
 `;
 
@@ -45,7 +47,6 @@ const PrevUrlsInnerContainer = styled(Grid)`
   @media (max-width: 600px) {
     padding: 0;
     width: 70%;
-
   }
 `;
 
@@ -56,7 +57,6 @@ const HeaderText = styled.div`
 
   @media (max-width: 600px) {
     font-size: 28px;
-    /* padding-bottom: 1em; */
   }
 `;
 
@@ -70,13 +70,13 @@ const SubText = styled.div`
 
   @media (max-width: 750px) {
     max-width: 80vw;
-    padding: 1em
+    padding: 1em;
   }
 
   @media (max-width: 600px) {
     max-width: 100vw;
     font-size: 16px;
-    padding: 1em
+    padding: 1em;
   }
 `;
 
@@ -94,17 +94,14 @@ const SellingPointsContainer = styled(Grid)`
   @media (max-width: 600px) {
     padding: 0;
   }
-`
+`;
 
 const SellingPointsInnerContainer = styled(Grid)`
   z-index: 2;
-
-  @media (max-width: 600px){
-  }
 `;
 
 const BottomBar = styled.hr`
-  border-top: 8px solid #2BD0D0;
+  border-top: 8px solid #2bd0d0;
   width: 60%;
   z-index: 1;
   justify-self: center;
@@ -117,12 +114,10 @@ const BottomBar = styled.hr`
     transform: rotate(90deg);
     margin-left: -1px;
     width: 100vh;
-
   }
 
   @media (max-width: 950px) {
     width: 110vh;
-
   }
 `;
 
@@ -170,8 +165,6 @@ const SubLinkOuterContainer = styled(Grid)`
 
   @media (max-width: 800px) {
     flex-direction: column;
-    /* align-content: center; */
-
   }
 `;
 
@@ -186,13 +179,12 @@ const SubLinkContainer = styled.div`
   @media (max-width: 1050px) {
     padding: 0 1em;
   }
-
 `;
 
 const Sublinks = styled.p`
   color: #bfbfbf;
   :hover {
-    color: #2BD0D0;
+    color: #2bd0d0;
     cursor: pointer;
   }
 `;
@@ -210,113 +202,127 @@ const LogoContainer = styled(Grid)`
 
   svg:hover {
     cursor: pointer;
-    fill: #2BD0D0;
+    fill: #2bd0d0;
   }
 `;
 
 const Logo = styled.div`
-  fill: #FFF;
+  fill: #fff;
 
   svg:hover {
-  fill: #2BD0D0;
-}
-`
-
+    fill: #2bd0d0;
+  }
+`;
 
 const sellingPoints = [
-  {title: "Brand Recognition", text: "Boost your brand recognition with each click. Generic links don’t mean a thing. Branded links help instil confidence in your content.", icon: brandRecognition},
-  {title: "Detailed Records", text: "Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.", icon: detailedRecords},
-  {title: "Fully Customizable", text: "Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.", icon: fullyCustomizable},
-]
+  {
+    title: "Brand Recognition",
+    text: "Boost your brand recognition with each click. Generic links don’t mean a thing. Branded links help instil confidence in your content.",
+    icon: brandRecognition,
+  },
+  {
+    title: "Detailed Records",
+    text: "Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.",
+    icon: detailedRecords,
+  },
+  {
+    title: "Fully Customizable",
+    text: "Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.",
+    icon: fullyCustomizable,
+  },
+];
 
 const companyLinks = [
-  {title: "Features", subLinks: ["Link Shortening", "Branded Links", "Analytics"]},
-  {title: "Resources", subLinks: ["Blog", "Developers", "Support"]},
-  {title: "Company", subLinks: ["About", "Our Team", "Careers", "Contact"]},
-]
+  {
+    title: "Features",
+    subLinks: ["Link Shortening", "Branded Links", "Analytics"],
+  },
+  { title: "Resources", subLinks: ["Blog", "Developers", "Support"] },
+  { title: "Company", subLinks: ["About", "Our Team", "Careers", "Contact"] },
+];
 
-const mediaLogos = [Facebook, Twitter, Pintrest, Instagram ]
+const mediaLogos = [Facebook, Twitter, Pintrest, Instagram];
 
-const BottomComponent = ({previousUrls}) => {
-  const isDesktop = useMediaQuery('(min-width:1100px)');
-  const isMobile = useMediaQuery('(min-width:600px)');
+const BottomComponent = ({ previousUrls }) => {
+  const isDesktop = useMediaQuery("(min-width:1100px)");
+  const isMobile = useMediaQuery("(min-width:600px)");
 
   return (
-   <BottomContainer container direction="column">
-     <PrevUrlsContainer container spacing={3}>
-       {previousUrls.map((currentUrl, index) => (
-         <PrevUrlsInnerContainer
-           item
-           xs={11}
-          //  md={11}
-           key={index}
-         >
-           <PreviousUrl url={currentUrl.url} shortUrl={currentUrl.shortUrl} />
-         </PrevUrlsInnerContainer>
-       ))}
-     </PrevUrlsContainer>
-     {/* <Grid container> */}
-     <Grid item xs={12} style={{marginBottom: "3em"}}>
-       <Grid item xs={12} style={{ justifyContent: "center", marginTop: "10em" }}>
-         <HeaderText>
-           Advanced Statistics
-         </HeaderText>
-         <SubText>
-           Track how your links are performing across the web with our advanced
-           statistics dashboard.
-         </SubText>
-       </Grid>
-       <SellingPointsContainer
-         item
-         xs={12}
-       >
-         {sellingPoints.map((point, index) => (
-           <SellingPointsInnerContainer item xs={12} key={index} >
-             <SellingPoint
-               title={point.title}
-               text={point.text}
-               icon={point.icon}
-               index={index}
-               marginTop={isDesktop ? `${index * 3}em` : "5em"}
-             />
-           </SellingPointsInnerContainer>
-         ))}
-         <BottomBar/>
-       </SellingPointsContainer>
-     </Grid>
-     <Footer item xs={12} style={{ }}>
-          <FooterTextContainer>
+    <BottomContainer container direction="column">
+      <PrevUrlsContainer container spacing={3}>
+        {previousUrls.map((currentUrl, index) => (
+          <PrevUrlsInnerContainer
+            item
+            xs={11}
+            //  md={11}
+            key={index}
+          >
+            <PreviousUrl url={currentUrl.url} shortUrl={currentUrl.shortUrl} />
+          </PrevUrlsInnerContainer>
+        ))}
+      </PrevUrlsContainer>
+      {/* <Grid container> */}
+      <Grid item xs={12} style={{ marginBottom: "3em" }}>
+        <Grid
+          item
+          xs={12}
+          style={{ justifyContent: "center", marginTop: "10em" }}
+        >
+          <HeaderText>Advanced Statistics</HeaderText>
+          <SubText>
+            Track how your links are performing across the web with our advanced
+            statistics dashboard.
+          </SubText>
+        </Grid>
+        <SellingPointsContainer item xs={12}>
+          {sellingPoints.map((point, index) => (
+            <SellingPointsInnerContainer item xs={12} key={index}>
+              <SellingPoint
+                title={point.title}
+                text={point.text}
+                icon={point.icon}
+                index={index}
+                marginTop={isDesktop ? `${index * 3}em` : "5em"}
+              />
+            </SellingPointsInnerContainer>
+          ))}
+          <BottomBar />
+        </SellingPointsContainer>
+      </Grid>
+      <Footer item xs={12} style={{}}>
+        <FooterTextContainer>
           <FooterHeaderText>Boost your links today</FooterHeaderText>
-          <StandardButton text="Get Started" style={{fontSize: "20px", fontWeight: "bold !important"}}/>
-          </FooterTextContainer>
-          <div style={{ display: "flex", width: "100%", height: "16em"}}>
-            {isMobile ? bgBoostDesktop : bgBoostMobile}
-          </div>
-     </Footer>
-     <SubFooter item xs={12} style={{ }}>
-          <Grid item sm={3} xs={12} style={{margin: "1em 0"}}>
-            <img src={logo} style={{fill: "#FFFFFF"}} alt="logo" />
-          </Grid>
-          <SubLinkOuterContainer item sm={6} xs={12} style={{ }}>
-            {companyLinks.map((link) => (
-              <SubLinkContainer >
-              <h4 style={{color: "white"}}>{link.title}</h4>
+          <StandardButton
+            text="Get Started"
+            style={{ fontSize: "20px", fontWeight: "bold !important" }}
+          />
+        </FooterTextContainer>
+        <div style={{ display: "flex", width: "100%", height: "16em" }}>
+          {isMobile ? bgBoostDesktop : bgBoostMobile}
+        </div>
+      </Footer>
+      <SubFooter item xs={12} style={{}}>
+        <Grid item sm={3} xs={12} style={{ margin: "1em 0" }}>
+          <img src={logo} style={{ fill: "#FFFFFF" }} alt="logo" />
+        </Grid>
+        <SubLinkOuterContainer item sm={6} xs={12} style={{}}>
+          {companyLinks.map((link) => (
+            <SubLinkContainer>
+              <h4 style={{ color: "white" }}>{link.title}</h4>
               {link.subLinks.map((subLink) => (
                 <Sublinks>{subLink}</Sublinks>
               ))}
-              </SubLinkContainer>
-            ))}
-          </SubLinkOuterContainer>
-          <LogoContainer item sm={3} xs={12} style={{ }}>
-                {mediaLogos.map((logo, index) => (
-                  <Logo>
-                  {logo}
-                  </Logo>
-                ))}
-          </LogoContainer>
-    </SubFooter>
-   </BottomContainer>
- );
-}
+            </SubLinkContainer>
+          ))}
+        </SubLinkOuterContainer>
+        <LogoContainer item sm={3} xs={12} style={{}}>
+          {mediaLogos.map((logo, index) => (
+            <Logo>{logo}</Logo>
+          ))}
+        </LogoContainer>
+      </SubFooter>
+    </BottomContainer>
+  );
+};
 
 export default BottomComponent;

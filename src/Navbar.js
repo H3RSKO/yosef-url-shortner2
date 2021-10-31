@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Grid } from "@material-ui/core";
 import { AppBar, Toolbar } from "@material-ui/core";
 import StandardButton from "./components/StandardButton";
-import logo from "./logo.svg";
+import logo from "./media/logo.svg";
 import "./Navbar.css";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import styled from "styled-components";
@@ -30,9 +30,7 @@ const MobileMenuContainer = styled.div`
     margin-left: auto;
     margin-right: auto;
     width: 90vw;
-
   }
-
 `;
 
 const MobileMenu = styled.div`
@@ -134,8 +132,13 @@ const Navbar = () => {
                 {link}
               </div>
             ))}
-            <hr class="solid" height="1px" color="#9E9AA8" style={{borderWidth: "0.5px", width: "80%"}} />
-            <p/> Login <p/>
+            <hr
+              class="solid"
+              height="1px"
+              color="#9E9AA8"
+              style={{ borderWidth: "0.5px", width: "80%" }}
+            />
+            <p /> Login <p />
             <StandardButton text="Sign Up" />
           </MobileMenu>
         </MobileMenuContainer>

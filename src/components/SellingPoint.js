@@ -31,13 +31,7 @@ const IconContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  /* @media (max-width: 1100px) {
-    margin-left: marginTop;
-  } */
-
   @media (max-width: 600px) {
-    /* margin-left: 50%; */
-    /* margin-right: 50%; */
     position: absolute;
     margin-top: -3em;
     left: 0;
@@ -69,14 +63,20 @@ const Text = styled.p`
 `;
 
 export const SellingPoint = ({ title, text, icon, marginTop, index }) => {
-  const isTablet = useMediaQuery('(min-width:600px)', '(max-width:1100px)');
+  const isTablet = useMediaQuery("(min-width:600px)", "(max-width:1100px)");
   return (
     <SellingPointContainer style={{ marginTop }}>
-      <IconContainer style={{marginLeft: isTablet ? [0, "calc(50% - 40px)", "calc(90% - 40px)"][index] : "auto" }}>
+      <IconContainer
+        style={{
+          marginLeft: isTablet
+            ? [0, "calc(50% - 40px)", "calc(90% - 40px)"][index]
+            : "auto",
+        }}
+      >
         {icon}
       </IconContainer>
-      <Title >{title}</Title>
-      <Text >{text}</Text>
+      <Title>{title}</Title>
+      <Text>{text}</Text>
     </SellingPointContainer>
   );
 };
