@@ -68,10 +68,6 @@ const Text = styled.p`
   }
 `;
 
-// !!!! check space between selling points is diff
-// !!!! fix line in tablet mode (get rid of it?)
-
-
 export const SellingPoint = ({ title, text, icon, marginTop, index }) => {
   const isTablet = useMediaQuery('(min-width:600px)', '(max-width:1100px)');
   return (

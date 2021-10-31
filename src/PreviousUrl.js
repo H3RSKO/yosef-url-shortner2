@@ -26,6 +26,7 @@ const UrlContainer = styled(Grid)`
 
   @media (max-width: 600px) {
     padding: 0.5em;
+    margin-top: 0.5em !important;
     font-weight: 500;
     align-self: flex-start;
     margin-left: 0.5em !important;

@@ -32,13 +32,13 @@ background-color: white;
 border-radius: 6px;
 font-weight: bold;
 outline: none;
-border: none;
 padding: 1.075em 1.3em;
 width: fill-available;
 height: 100%;
 font-size: 20px;
 font-weight: bold;
-
+border: ${(props) => props.error ? "2px solid #F46363" : "none"};
+  border-radius: 4px;
 
 @media (max-width: 1260px) {
   margin-right: 1em
@@ -83,33 +83,29 @@ const UrlButton = styled.div`
 const BackgroundContainer = styled.div`
   display: flex;
   width: 100%;
-  /* height: 16em; */
-  /* display: flex;
-  position: absolute;
-  z-index: -1;
-  right: calc(5em - 8px);
-  left: calc(5em - 8px);
-
-  @media (max-width: 960px) {
-    height: 234px
-  }
-
-  @media (max-width: 800px) {
-    height: 234px */
-  /* } */
 `;
 
 const UrlShortener = ({previousUrls, setPreviousUrls}) => {
   const [currentUrl, setCurrentUrl] = useState("");
+  const [error, setError] = useState(false);
 
   // const [previousUrls, setPreviousUrls] = useState([]);
 
   const clickHandler = async () => {
     console.log("clicked");
-    // get shortened url
-    const {data} = await axios.get(`https://api.shrtco.de/v2/shorten?url=${currentUrl}`)
-    // add shortened url to previous urls
-    setPreviousUrls([...previousUrls, {url: currentUrl.includes('http') ? currentUrl : `https://${currentUrl}`, shortUrl: data.result.short_link2}])
+    if (currentUrl.length === 0) {
+      setError(true);
+      return;
+    }
+    try {
+      // get shortened url
+      const {data} = await axios.get(`https://api.shrtco.de/v2/shorten?url=${currentUrl}`)
+      // add shortened url to previous urls
+      setPreviousUrls([...previousUrls, {url: currentUrl.includes('http') ? currentUrl : `https://${currentUrl}`, shortUrl: data.result.short_link2}])
+      setError(false);
+    } catch (error) {
+        setError(true);
+    }
   }
 
   return (
@@ -120,8 +116,9 @@ const UrlShortener = ({previousUrls, setPreviousUrls}) => {
     >
       {/* <div style={{position: "absolute", zIndex: "-1"}}> */}
       <Grid item xs={12} md={10} style={{width: "100%", height: "100%", display: "flex"}}>
-        <SearchBar type="url" placeholder="Shorten a link here..."  onChange={(e) => setCurrentUrl(e.target.value)} value={currentUrl} />
+        <SearchBar type="url" placeholder="Shorten a link here..."  onChange={(e) => setCurrentUrl(e.target.value)} value={currentUrl} error={error}/>
       </Grid>
+        {error && <div style={{color: "#F46363", fontSize: "12px", display: "flex", alignSelf: "flexStart", width: "100%", }}>&nbsp; &nbsp; Please add a link</div>}
       <ButtonContainer item xs={12} md={2} >
         <UrlButton onClick={clickHandler} >
         Shorten It!

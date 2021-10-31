@@ -115,8 +115,13 @@ const BottomBar = styled.hr`
 
   @media (max-width: 1100px) {
     transform: rotate(90deg);
-    margin-left: 0;
+    margin-left: -1px;
     width: 100vh;
+
+  }
+
+  @media (max-width: 950px) {
+    width: 110vh;
 
   }
 `;
@@ -251,7 +256,7 @@ const BottomComponent = ({previousUrls}) => {
        ))}
      </PrevUrlsContainer>
      {/* <Grid container> */}
-     <Grid item xs={12}>
+     <Grid item xs={12} style={{marginBottom: "3em"}}>
        <Grid item xs={12} style={{ justifyContent: "center", marginTop: "10em" }}>
          <HeaderText>
            Advanced Statistics
