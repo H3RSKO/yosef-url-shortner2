@@ -85,10 +85,13 @@ const Navbar = () => {
                   display: "flex",
                   flexDirection: "row",
                   justifyContent: "space-between",
+                  color: "#9E9AA8",
+                  fontWeight: "bold",
+                  fontSize: "15px",
                 }}
               >
-                {links.map((link) => (
-                  <div className="links" key={link}>
+                {links.map((link, i) => (
+                  <div className="links" key={i}>
                     {link}
                   </div>
                 ))}
@@ -111,8 +114,7 @@ const Navbar = () => {
               item
               xs={6}
               sm={4}
-              justifyContent="flex-end"
-              style={{ display: "flex" }}
+              style={{ display: "flex", justifyContent:"flex-end" }}
               onClick={() => setMobileMenu(!mobileMenu)}
             >
               <svg width="2.5em" height="2.5em" viewBox="0 0 512 512">

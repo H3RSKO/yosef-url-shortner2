@@ -1,4 +1,4 @@
-import { Grid } from "@material-ui/core";
+import { Grid, useMediaQuery } from "@material-ui/core";
 import axios from "axios";
 import { useState } from "react";
 import "./UrlShortener.js";
@@ -84,6 +84,7 @@ const BackgroundContainer = styled.div`
 const UrlShortener = ({ previousUrls, setPreviousUrls }) => {
   const [currentUrl, setCurrentUrl] = useState("");
   const [error, setError] = useState(false);
+  const isMobile = useMediaQuery("(max-width:950)");
 
   // const [previousUrls, setPreviousUrls] = useState([]);
 
@@ -130,7 +131,7 @@ const UrlShortener = ({ previousUrls, setPreviousUrls }) => {
           error={error}
         />
       </Grid>
-      {error && (
+      {error && isMobile && (
         <div
           style={{
             color: "#F46363",
@@ -146,7 +147,19 @@ const UrlShortener = ({ previousUrls, setPreviousUrls }) => {
       <ButtonContainer item xs={12} md={2}>
         <UrlButton onClick={clickHandler}>Shorten It!</UrlButton>
       </ButtonContainer>
-      <BackgroundContainer></BackgroundContainer>
+      {error && !isMobile && (
+        <div
+          style={{
+            color: "#F46363",
+            fontSize: "12px",
+            display: "flex",
+            alignSelf: "flexStart",
+            width: "100%",
+          }}
+        >
+          &nbsp; &nbsp; Please add a link
+        </div>
+      )}
     </SearchContainer>
   );
 };

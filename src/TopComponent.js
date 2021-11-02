@@ -86,7 +86,7 @@ const TopComponent = () => {
   return (
     <TopWrapper
       container
-      justify="center"
+      justifyContent="center"
       alignItems="center"
       direction="row-reverse"
     >
