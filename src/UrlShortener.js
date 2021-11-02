@@ -76,11 +76,6 @@ const UrlButton = styled.div`
   }
 `;
 
-const BackgroundContainer = styled.div`
-  display: flex;
-  width: 100%;
-`;
-
 const UrlShortener = ({ previousUrls, setPreviousUrls }) => {
   const [currentUrl, setCurrentUrl] = useState("");
   const [error, setError] = useState(false);
