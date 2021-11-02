@@ -84,6 +84,8 @@ const SellingPointsContainer = styled(Grid)`
   justify-content: center;
   padding: 5em 7em;
   display: flex;
+  flex-basis: 0%;
+  column-gap: 3.2em;
 
   @media (max-width: 1100px) {
     flex-direction: column;
@@ -109,15 +111,21 @@ const BottomBar = styled.hr`
   position: absolute;
   margin-left: 10em;
   margin-top: -2em;
+  border-bottom: none;
 
   @media (max-width: 1100px) {
     transform: rotate(90deg);
+    margin-top: 2em;
     margin-left: -1px;
-    width: 100vh;
+    width:  50%;
   }
 
   @media (max-width: 950px) {
-    width: 110vh;
+    width: 75%;
+  }
+
+  @media (max-width: 600px) {
+    width: 120%;
   }
 `;
 
@@ -250,12 +258,12 @@ const BottomComponent = ({ previousUrls }) => {
   return (
     <BottomContainer container direction="column">
       <PrevUrlsContainer container spacing={3}>
-        {previousUrls.map((currentUrl, index) => (
+        {previousUrls.map((currentUrl, i) => (
           <PrevUrlsInnerContainer
             item
             xs={11}
             //  md={11}
-            key={index}
+            key={i}
           >
             <PreviousUrl url={currentUrl.url} shortUrl={currentUrl.shortUrl} />
           </PrevUrlsInnerContainer>
@@ -306,18 +314,18 @@ const BottomComponent = ({ previousUrls }) => {
           <img src={logo} style={{ fill: "#FFFFFF" }} alt="logo" />
         </Grid>
         <SubLinkOuterContainer item sm={6} xs={12} style={{}}>
-          {companyLinks.map((link) => (
-            <SubLinkContainer>
+          {companyLinks.map((link, i) => (
+            <SubLinkContainer key={i}>
               <h4 style={{ color: "white" }}>{link.title}</h4>
-              {link.subLinks.map((subLink) => (
-                <Sublinks>{subLink}</Sublinks>
+              {link.subLinks.map((subLink, i) => (
+                <Sublinks key={i}>{subLink}</Sublinks>
               ))}
             </SubLinkContainer>
           ))}
         </SubLinkOuterContainer>
         <LogoContainer item sm={3} xs={12} style={{}}>
-          {mediaLogos.map((logo, index) => (
-            <Logo>{logo}</Logo>
+          {mediaLogos.map((logo, i) => (
+            <Logo key={i}>{logo}</Logo>
           ))}
         </LogoContainer>
       </SubFooter>
